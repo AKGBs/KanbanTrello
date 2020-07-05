@@ -52,6 +52,7 @@
                 l.cards = cards.filter((c: any) => l.id === c.idList);
             });
 
+            // return [lists[2], lists[3], lists[4]];
             return lists;
         }
 

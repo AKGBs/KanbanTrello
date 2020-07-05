@@ -1,7 +1,14 @@
 <template>
+    <html>
+    <head>
+        <link href="http://fonts.googleapis.com/css?family=Reenie+Beanie:regular" rel="stylesheet" type="text/css">
+    </head>
+    <body>
     <div id="app">
         <Board/>
     </div>
+    </body>
+    </html>
 </template>
 
 <script lang="ts">

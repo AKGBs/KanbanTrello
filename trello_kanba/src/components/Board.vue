@@ -35,10 +35,6 @@
 </script>
 
 <style lang="css">
-    .container {
-        /*height: 90vh;*/
-    }
-
     .table {
         height: 85vh;
         max-height: 85vh;
