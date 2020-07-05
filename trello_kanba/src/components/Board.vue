@@ -3,10 +3,12 @@
         <BoardSelector @loaded-board="onLoadBoard"></BoardSelector>
         <table class="board">
             <tr>
-                <th v-for="l in lists">{{l}}</th>
+                <th v-for="l in lists">{{l.name}}</th>
             </tr>
             <tr>
-                <td v-for="l in lists"></td>
+                <td v-for="l in lists">
+                    <p v-for="c in l.cards">{{c.name}}</p>
+                </td>
             </tr>
         </table>
     </div>
@@ -22,12 +24,9 @@
         },
     })
     export default class Board extends Vue {
-        public lists: string[] = ['Prova1', 'Prova2', 'Prova3'];
-
-        public onLoadBoard(lists: [{ id: string, name: string }]) {
-            this.lists = lists.map((x: any) => {
-                return x.name;
-            });
+        public lists: [] = [];
+        public onLoadBoard(lists: []) {
+            this.lists = lists;
         }
     }
 </script>
@@ -36,6 +35,7 @@
     .board {
         width: 100%;
         height: 85vh;
+        max-height: 85vh;
     }
 
     .board td {

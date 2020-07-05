@@ -40,9 +40,19 @@
         @Emit()
         public async loadedBoard() {
             this.save_cookies();
-            let URL = `${this.BASE_PATH}/1/boards/${this.idBoard}/lists?key=${this.key}&token=${this.token}`;
-            const res = await fetch(URL);
-            return res.json();
+            const URL_LISTS = `${this.BASE_PATH}/1/boards/${this.idBoard}/lists?key=${this.key}&token=${this.token}`;
+            const URL_CARDS = `${this.BASE_PATH}/1/boards/${this.idBoard}/cards?key=${this.key}&token=${this.token}`;
+
+            const [lists, cards] = await Promise.all([
+                fetch(URL_LISTS).then((response) => response.json()),
+                fetch(URL_CARDS).then((response) => response.json()),
+            ]);
+
+            lists.forEach((l: any) => {
+                l.cards = cards.filter((c: any) => l.id === c.idList);
+            });
+
+            return lists;
         }
 
         private save_cookies() {
