@@ -1,7 +1,7 @@
 <template>
-    <div class="container">
+    <div>
         <BoardSelector @loaded-board="onLoadBoard"></BoardSelector>
-        <table class="board">
+        <table class="table">
             <tr>
                 <th v-for="l in lists">{{l.name}}</th>
             </tr>
@@ -39,22 +39,24 @@
         /*height: 90vh;*/
     }
 
-    table.board {
+    .table {
         height: 85vh;
         max-height: 85vh;
         table-layout: fixed;
     }
 
-    .board td {
+    .table td {
         border: 1px solid black;
-        height: 100%;
+        height: 80vh;
         vertical-align: top;
     }
 
-    .board th {
+    .table th {
         padding: 5px;
         border: 1px solid black;
         text-wrap: normal;
         font-size: 2vh;
+        text-align: center;
+        vertical-align: center;
     }
 </style>

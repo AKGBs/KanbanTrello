@@ -1,7 +1,7 @@
 <template>
-    <p class="card">
+    <div class="myrd">
         {{data.name}}
-    </p>
+    </div>
 </template>
 
 <script lang="ts">
@@ -20,16 +20,15 @@
 </script>
 
 <style lang="css">
-    .card {
+    .myrd {
         float: left;
         overflow: hidden;
 
-        width: 20%;
+        width: 29%;
         height: 5%;
 
         border: 1px solid black;
-        margin-left: 5px;
-        margin-right: 5px;
+        margin: 5px;
 
         font-size: 1vh;
         padding: 5px;
