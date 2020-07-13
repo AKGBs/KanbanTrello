@@ -1,8 +1,7 @@
 <template>
-    <div class="postit"
-         @click="zoom"
-         v-bind:class="{zoomed: isZoomed}">
-        {{data.name}}
+    <div @click="zoom"
+         v-bind:class="class_list()">
+        <p>{{data.name}}</p>
     </div>
 </template>
 
@@ -22,22 +21,30 @@
         public zoom() {
             this.isZoomed = !this.isZoomed;
         }
+
+        private class_list() {
+            return [
+                'postit',
+                {zoomed: this.isZoomed},
+                {rotated_postit: !this.isZoomed},
+            ];
+        }
     }
 </script>
 
 <style lang="css">
+    .postit p {
+        word-break: break-word;
+        font-size: 0.8vh;
+    }
+
     .postit {
         float: left;
         overflow: hidden;
-        font-size: 8px;
         line-height: 0.9;
 
         width: 4vw;
         height: 4vw;
-
-        margin: 5px;
-
-        /*font-size: 1vh;*/
         padding: 5px;
 
         background: #ffc;
@@ -45,12 +52,12 @@
         -moz-box-shadow: 2px 2px 3px rgba(33, 33, 33, 1);
         -webkit-box-shadow: 2px 2px 3px rgba(33, 33, 33, .7);
         box-shadow: 2px 2px 3px rgba(33, 33, 33, .7);
-        /*transition: transform 750ms;*/
+        transition: transform 250ms;
         font-family: "Reenie Beanie", arial, sans-serif;
         z-index: 0;
     }
 
-    .postit:nth-child(even) {
+    .rotated_postit:nth-child(even) {
         -o-transform: rotate(4deg);
         -webkit-transform: rotate(4deg);
         -moz-transform: rotate(4deg);
@@ -58,7 +65,7 @@
         top: 5px;
     }
 
-    .postit:nth-child(3n) {
+    .rotated_postit:nth-child(3n) {
         -o-transform: rotate(-3deg);
         -webkit-transform: rotate(-3deg);
         -moz-transform: rotate(-3deg);
@@ -66,7 +73,7 @@
         top: -5px;
     }
 
-    .postit:nth-child(5n) {
+    .rotated_postit:nth-child(5n) {
         -o-transform: rotate(5deg);
         -webkit-transform: rotate(5deg);
         -moz-transform: rotate(5deg);
@@ -75,7 +82,7 @@
     }
 
     .zoomed {
-        position: fixed;
+        position: relative;
         transform: scale(5.0);
         z-index: 5;
     }
